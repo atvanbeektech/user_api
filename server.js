@@ -33,6 +33,8 @@ fastify.register(require("point-of-view"), {
   }
 });
 
+
+
 // Load and parse SEO data
 
 
@@ -113,5 +115,14 @@ fastify.get("/logs", async (request, reply) => {
  * If auth is successful, empty the history
  */
 fastify.post("/reset", async (request, reply) => {
-  return {message: "this is the reset"}
+  return {message: "this"}
+});
+
+fastify.listen(process.env.PORT, function(err, address) {
+  if (err) {
+    fastify.log.error(err);
+    process.exit(1);
+  }
+  console.log(`Your app is listening on ${address}`);
+  fastify.log.info(`server listening on ${address}`);
 });
